@@ -2,7 +2,7 @@ TextUtils
 ---------------------------------------------------------------------------------------------------------
 This is a simple web application developed in react where we can manipulate text.
 Check out its usage here :
-
+https://ravsaheb1968.github.io/TextUtils-React/
 Utilities
 ---------------------------------------------------------------------------------------------------------
 0. Upload text from some file.
