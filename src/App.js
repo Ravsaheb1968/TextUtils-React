@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-
+import Alert from './component/Alert';
+import Navbar from './component/Navbar';
+import Textform from './component/Textform';
+import Footer from './component/Footer';
 function App() {
+  const [mode, setmode] = useState('light');
+  const [alert, setalert] = useState(null);
+  const showalert = (message, type) => {
+    setalert({
+      msg: message,
+      type: type
+    })
+  }
+  const darkmode = () => {
+    if (mode === "light") {
+      setmode('dark')
+      document.body.style.backgroundColor = 'grey'
+      showalert("Dark mode is Enable", "success")
+    }
+    else {
+      setmode('light')
+      document.body.style.backgroundColor = 'white'
+      showalert("Light mode is Enable", "success")
+    }
+  }
+  setTimeout(() => {
+    setalert()
+  }, 3000);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar heading="TextUtils" darkmode={darkmode} />
+      <Alert alert={alert}/>
+      <Textform showalert={showalert}/>
+      <Footer/>
+    </>
   );
 }
 
